@@ -1,21 +1,23 @@
-var addresses = require('./addresses');
+﻿var addresses = require('./addresses');
 
-var result = [];
+var results = [];
 
 var regular=/^(?: +)?(?:ул.?|пр-т.?|пл.?)? ?([0-9А-Яа-я. \-]+),? ?(?:дом)?(?: +)?([0-9]+[-]?[А-Яа-я]?)?(?: +)?\/?([0-9]+)?/;
 var a;
 for(var i=0; i<addresses.length; i++)
 {
-      a=addresses[i].match(regular);
+     a=addresses[i].match(regular);
+     
      if(a) {
          var res = {
              street: a[1],
              house: a[2] || "",
              flat: a[3] || ""
          };
-         result.push(res);
+
+         results.push(res);
      }else{
-         result.push({"null":"null"});
+         results.push({"null":"null"});
      }
  //    if(a) {
  //        // console.log(i + 1, RegExp.$3);
@@ -25,7 +27,7 @@ for(var i=0; i<addresses.length; i++)
  //     console.log(i+1 + " null");
 }
 
-console.log(result);
+//console.log(results);
 // ... some good code ...
 
 /*
@@ -41,4 +43,4 @@ console.log(result);
  ...
  ]
  */
-module.exports = result;
+module.exports = results;
